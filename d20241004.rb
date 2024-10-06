@@ -9,10 +9,8 @@
 def merge(nums1, m, nums2, n)
   for i in 0..(n-1) do # number 2 index
     hold_value = nums2[i]
-    puts 'rouding'
-    puts nums1.inspect
     for j in i..(m+n-1) do
-      if hold_value <= nums1[j] || (hold_value > 0 && nums1[j]==0 && j>=m-1)
+      if hold_value <= nums1[j] || (hold_value > 0 && nums1[j]==0 && j>m-1+i)
         wrap_value = hold_value
         hold_value = nums1[j]
         nums1[j] = wrap_value
