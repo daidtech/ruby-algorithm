@@ -26,7 +26,10 @@ def max_profit(prices)
   min = prices[0]
   max = prices[(1..total_element-1)].max
   while(i<total_element-1) do
-    break if prices[i]==0
+    if prices[i]==0
+     profit_list << prices[(i..total_element-1)].max
+     break
+    end
     min = prices[i] if prices[i] < min
     max = prices[(i..total_element-1)].max if (min == prices[i])
     profit_list << (max-min)
@@ -35,6 +38,23 @@ def max_profit(prices)
   profit_list.max
 end
 
+# best version
+def max_profit(prices)
+  total_element = prices.size
+  return 0 if total_element<2
+  if (total_element==2)
+    return [prices[1] - prices[0], 0].max
+  end
+
+  min = prices[0]
+  profit = 0
+  max_profit = prices.max - prices.min
+  prices.each do |price|
+    min = price if price<min
+    profit = [profit, price - min].max
+  end
+  profit
+end
 
 require 'rspec'
 RSpec.describe 'max_profit' do
