@@ -8,6 +8,8 @@
 # @param {Integer[]} nums
 # @return {Boolean}
 def jump(nums)
+  total_size = nums.size
+  return 0 if total_size<=1
 end
 
 require 'rspec'
