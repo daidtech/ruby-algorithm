@@ -3,7 +3,14 @@
 # @param {String} magazine
 # @return {Boolean}
 def can_construct(ransom_note, magazine)
-  ransom_note.split('')-magazine.split('') == []
+  count_ransom_note = counter(ransom_note)
+  count_magazine = counter(magazine)
+
+  count_ransom_note.all? { |char, count| count_magazine[char] >= count }
+end
+
+def counter(str)
+  str.each_char.with_object(Hash.new(0)) { |chr, results| results[chr] += 1 }
 end
 
 # 012_test.rb
